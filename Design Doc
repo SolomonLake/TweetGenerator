@@ -1,0 +1,12 @@
+Design Doc:
+
+POS tagger will need to account for weird symbols, like &amp for & (maybe already accounted for in NLTK) which will need to be handled properly.
+Or random crap, like &#8230; (definitely not accounted for) which should be ignored.
+
+Kind of stuff that needs to be ignored:
+&#8230;
+<a target="_blank" href="https://t.co/7KexXsXLUx">https://t.co/7KexXsXLUx</a>
+
+
+Log:
+"tweets" file has been created - Lake
