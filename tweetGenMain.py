@@ -39,14 +39,17 @@ def load_obj(name ):
 #[[('more', 'RBR'), ('beautiful', 'JJ')], [('than', 'IN'), ('the', 'DT')]]
 tweetsPOSList = load_obj("tweetsPOS")
 
-#dict of pos -> [words freq]
+#need to order these by freq
+
+#dict of pos -> [[words freq]]
 dictPOS = load_obj("dictPOS")
 
+#dict of pos -> [[POS freq]]
 followsPOS = {}
 
 #these are out of 10
-chanceNextPOSFirst = 5
-chanceNextPOS2t5 = 3
+chanceNextFirst = 5
+chanceNext2t5 = 3
 
 
 
@@ -54,11 +57,25 @@ def genTweet():
 	curSym = "S#"
 	generatedString = ""
 	while (not len(generatedString) > 140 or curSym != "#"):
+		if (curSym != "S#"):
+			chancePOS = random.randrange(10)
+			if (chancePOS >= chanceNextPOSFirst):
+				whichWord = random.randrange(int(len(dictPOS[curSym])/10))
+				generatedString += dictPOS[curSym][whichWord][0]
+			elif (chancePOS >= chanceNextPOS2t5):
+				whichWord = random.randrange(int(len(dictPOS[curSym])/10), int(len(dictPOS[curSym])/3))
+				curSym = nextSyms[random.randrange(1,5)]
+			else:
+				whichWord = random.randrange(int(len(dictPOS[curSym])/3), len(dictPOS[curSym]))
+				generatedString += dictPOS[curSym][random.randrange[len(dictPOS[curSym])]]
+
 		nextSyms = followsPOS[curSym]
-		chance = random.randrange(10)
-		if (chance >= 5):
-			nextSym = nextSyms[0]
-		elif (chance >= 3):
-			nextSym = nextSyms[random.randrange(1,5)]
+		chanceSym = random.randrange(10)
+		if (chanceSym >= chanceNextPOSFirst):
+			curSym = nextSyms[0][0]
+		elif (chanceSym >= chanceNextPOS2t5):
+			curSym = nextSyms[random.randrange(1,5)][0]
 		else:
-			nextSym = nextSyms[random.randrange(5, len(nextSyms))]
+			curSym = nextSyms[random.randrange(5, len(nextSyms))][0]
+
+	print (generatedString)
