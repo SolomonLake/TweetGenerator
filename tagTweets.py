@@ -20,17 +20,5 @@ def tag(filename):
 
   return tagged_tweets
 
-'''  
-  # tag each word with most likely tag
-  text = [] 
-  for tweet in tokenized_tweets:
-    taggedTweet = []
-    for i in range(len(tweet)):
-      tag = (tweet[i],MostLikelyTag(tweet[i]))
-      taggedTweet.append(tag)
-    text.append(taggedTweet)
-
-  return text
-'''
   
-print tag('tweets')
+#print tag('tweets')
