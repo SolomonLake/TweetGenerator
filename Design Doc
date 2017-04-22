@@ -16,11 +16,23 @@ Outline:
 Goal - Create a tweet generator.
 Inputs - Text file with sample tweets, chat training corpus.
 
+New: 
+Step 0: Use Twitter API to pull sample tweets from famous icon - e.g. President Donald Trump
+Step 1: Use Rule based POS tagging algorithm (Similar to Lab 3) to give POS tags to sample tweets (using NLTK chat corpus)
+Step 2: Use these newly tagged words to create a dictionary that maps POS to a list of words that person has used sorted by the number of times the word is used, i.e. NN : [(terrorist, 5), (patriot, 5), (poodle, 2)...]
+Step 3: Create dictionary that maps POS to next POS and frequency
+Step 4: Once we have the dictionaries, we will be able to use these together to create an n-gram model that can build new sentences (or fake tweets) that are similar in structure and content as the original tweets
+
+
+Potential extension: Use the NLTK WordNet 3.0 synonyms and a function that takes an input word, finds synonyms for it, and finds words that are similar in the dictionary we built from the sample tweets. This will allow us to create fake tweets that are about a user specified topic. 
+
+
+Log:
+
+Old steps:
 Step 0: Use Twitter API to pull sample tweets from famous icon - e.g. President Donald Trump
 Step 1: Use Rule based POS tagging algorithm (Similar to Lab 3) to give POS tags to sample tweets (using NLTK chat corpus)
 Step 2: Use these newly tagged words to create a dictionary that maps POS to a list of words that person has used sorted by the number of times the word is used, i.e. NN : [(terrorist, 5), (patriot, 5), (poodle, 2)...]
 Step 3: Updated: now going to create tweets based on HMM, don't need to parse whole sentence
 Step 4: Using the parsed tweets, develop a series of sentence grammars that the different tweets use (Stored in a list of grammars)
 Step 5: Once we have the word dictionary and the grammars, we will be able to use these together to create an n-gram model that can build new sentences (or fake tweets) that are similar in structure and content as the original tweets
-
-Potential extension: Use the NLTK WordNet 3.0 synonyms and a function that takes an input word, finds synonyms for it, and finds words that are similar in the dictionary we built from the sample tweets. This will allow us to create fake tweets that are about a user specified topic. 
