@@ -1,7 +1,7 @@
 Design Doc:
 
 Next step:
-Should probably write a function that goes through tweets and adds them each to a list. These lists should then be separated by word (more lists). These words should then be assigned POS tags similar to Lab 3.
+Should probably write a function that goes through tweets and adds them each to a list. These lists should then be separated by word (more lists). These words should then be assigned POS tags similar to Lab 3. Hey
 
 
 POS tagger will need to account for weird symbols, like &amp for & (maybe already accounted for in NLTK) which will need to be handled properly.
