@@ -16,3 +16,4 @@ def POSfreq(taggedwords): #list of lists
                         else:
                                 d[tag] = [[word, 1]]
         return d
+
