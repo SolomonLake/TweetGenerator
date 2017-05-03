@@ -6,7 +6,7 @@ import pickle
 import random
 import math
 
-import tagTweets
+#import tagTweets
 import dictionarymaker
 
 
@@ -40,6 +40,8 @@ def load_obj(name ):
 #[[('more', 'RBR'), ('beautiful', 'JJ')], [('than', 'IN'), ('the', 'DT')]]
 tweetsPOSList = load_obj("tweetsPOS")
 
+biTweets = load_obj("bigram_tweets")
+
 
 #dict of pos -> [[words freq]]
 dictPOS = load_obj("dictPOS")
@@ -58,12 +60,31 @@ chanceNextFirst = 5
 chanceNext2t5 = 3
 
 
-endOfWordPunc = ["! ", ". ", "? "]
+puncSyms = ["!", ".", "?"]
+noSpaceAfter = ['#', '@']
+
 def genTweet():
-	curSym = "S#"
+	#startGrams = [x for x in biTweets if x[0] == "^"]
 	generatedString = ""
-	while (len(generatedString) < 140 and curSym != "F#"):
-		if (curSym != "S#"):
+	curGram = random.choice(biTweets[('S','^')].keys())
+	generatedString += curGram[1] + " "
+
+	while (len(generatedString) < 140):
+		curGram = random.choice(biTweets[curGram].keys())
+		if curGram[1] == '~':
+			break
+		if curGram[1] in puncSyms:
+			generatedString = generatedString[:-1]
+		if curGram[1] not in noSpaceAfter:
+			generatedString += curGram[1] + " "
+		else:
+			generatedString += curGram[1]
+
+	"""
+	curSym = "^"
+	generatedString = ""
+	while (len(generatedString) < 140 and curSym != "~"):
+		if (curSym != "^"):
 			chancePOS = random.randrange(10)
 			#print(curSym)
 			#print(generatedString)
@@ -96,7 +117,7 @@ def genTweet():
 			curSym = nextSyms[random.randrange(1,5)][0]
 		else:
 			curSym = nextSyms[random.randrange(5, len(nextSyms))][0]
-
+	"""
 
 
 	return generatedString

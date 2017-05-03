@@ -50,6 +50,7 @@ def POSprob(taggedwords):
             d[nowtag] = [[nexttag, 1]]
     return d
 
+print (POSprob(load_obj('tweetsPOS'))
 save_obj(POSprob(load_obj('tweetsPOS')), 'followsPOS')
 
 

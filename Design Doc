@@ -36,3 +36,7 @@ Step 2: Use these newly tagged words to create a dictionary that maps POS to a l
 Step 3: Updated: now going to create tweets based on HMM, don't need to parse whole sentence
 Step 4: Using the parsed tweets, develop a series of sentence grammars that the different tweets use (Stored in a list of grammars)
 Step 5: Once we have the word dictionary and the grammars, we will be able to use these together to create an n-gram model that can build new sentences (or fake tweets) that are similar in structure and content as the original tweets
+
+
+http://stackoverflow.com/questions/4859292/how-to-get-a-random-value-in-python-dictionary
+	-random element from dict
